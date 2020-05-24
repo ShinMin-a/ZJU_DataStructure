@@ -1,4 +1,4 @@
-include <stdio.h>
+#include <stdio.h>
 #include <stdlib.h>
 
 #define MAXSIZE 10
@@ -30,5 +30,17 @@ int main(){
 
 /* 你的代码 */
 Position BinarySearch(List L, ElementType X){
-    while(
+	if(L==NULL)
+		return NotFound;
+	int low=1, high=L->Last;
+	while(low<=high){
+		int mid=(low+high)/2;
+		if(L->Data[mid]==X)
+			return mid;
+		else if(L->Data[mid]>X)
+			high=mid-1;
+		else	
+			low=mid+1;	
+	}
+	return NotFound;
 }
